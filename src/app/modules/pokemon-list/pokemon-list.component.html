@@ -1,0 +1,13 @@
+<ng-container *ngIf="pokemons$ | async as pokemons">
+  <nz-row [nzGutter]="[16, 16]" nzSpan="4">
+    <nz-col nzSpan="6" *ngFor="let poke of pokemons">
+      <nz-card [nzTitle]="poke.name">
+        <img src="https://placehold.co/120x60" alt="Placeholder" />
+
+        <button nz-button nzType="link" (click)="navigateToDetails(poke)">
+          Details
+        </button>
+      </nz-card>
+    </nz-col>
+  </nz-row>
+</ng-container>

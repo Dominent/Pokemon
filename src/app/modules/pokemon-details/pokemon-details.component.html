@@ -1,0 +1,61 @@
+<ng-container *ngIf="pokemonDetails$ | async as pokemonDetails">
+  <ng-container *ngIf="!isEditMode">
+    <nz-list nzSize="large">
+      <nz-list-header>
+        <h2>{{ pokemonDetails.name }}</h2>
+      </nz-list-header>
+      <nz-list-item>
+        <span nz-typography
+          >Height: <strong>{{ pokemonDetails.height }}</strong></span
+        >
+      </nz-list-item>
+      <nz-list-item>
+        <span nz-typography
+          >Weight: <strong>{{ pokemonDetails.weight }}</strong></span
+        >
+      </nz-list-item>
+      <nz-list-footer>
+        <button nz-button nzType="primary" (click)="toggleEditMode()">
+          Edit
+        </button>
+      </nz-list-footer>
+    </nz-list>
+  </ng-container>
+
+  <ng-container *ngIf="isEditMode">
+    <form [formGroup]="editForm" (ngSubmit)="onSubmit(editForm)">
+      <nz-list nzSize="large">
+        <nz-list-header>
+          <h2>{{ pokemonDetails.name }}</h2>
+        </nz-list-header>
+      </nz-list>
+      <nz-form-item>
+        <nz-form-label nzFor="height" nzRequired>Height</nz-form-label>
+        <nz-form-control>
+          <input
+            nz-input
+            formControlName="height"
+            placeholder="Height"
+            id="height"
+          />
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label nzFor="weight" nzRequired>Weight</nz-form-label>
+        <nz-form-control>
+          <input
+            nz-input
+            formControlName="weight"
+            placeholder="Weight"
+            id="weight"
+          />
+        </nz-form-control>
+      </nz-form-item>
+      <button nz-button nzType="primary" type="submit">Submit</button>
+      <button nz-button nzType="default" (click)="toggleEditMode()">
+        Cancel
+      </button>
+    </form>
+  </ng-container>
+</ng-container>

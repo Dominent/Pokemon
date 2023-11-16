@@ -1,0 +1,34 @@
+:host {
+  display: flex;
+  margin: 20px;
+
+  nz-card {
+    transition: transform 0.3s ease;
+    text-align: center;
+
+    ::ng-deep {
+      .ant-card-head {
+        .ant-card-head-title {
+          text-transform: uppercase;
+        }
+      }
+
+      .ant-card-body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+
+    img {
+      width: 120px;
+      border-radius: 8px;
+    }
+
+    &:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+  }
+}
